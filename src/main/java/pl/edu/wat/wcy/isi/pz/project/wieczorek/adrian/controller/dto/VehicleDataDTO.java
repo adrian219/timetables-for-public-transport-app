@@ -21,48 +21,39 @@ public class VehicleDataDTO {
     @Column(name = "vehicle_id")
     private Long vehicleId;
 
-    private VehicleDTO vehicleDTO;
-    private LineDataDTO lineDataDTO;
-
     public VehicleDataDTO() {
 
     }
 
-    public VehicleDTO getVehicleDTO() {
-        return vehicleDTO;
+    public Long getVehicleDataId() {
+        return vehicleDataId;
     }
 
-    public void setVehicleDTO(VehicleDTO newVehicleDTO) {
-        if (this.vehicleDTO == null || !this.vehicleDTO.equals(newVehicleDTO)) {
-            if (this.vehicleDTO != null) {
-                VehicleDTO oldVehicleDTO = this.vehicleDTO;
-                this.vehicleDTO = null;
-                oldVehicleDTO.removeVehicleDataDTO(this);
-            }
-            if (newVehicleDTO != null) {
-                this.vehicleDTO = newVehicleDTO;
-                this.vehicleDTO.addVehicleDataDTO(this);
-            }
-        }
+    public void setVehicleDataId(Long vehicleDataId) {
+        this.vehicleDataId = vehicleDataId;
     }
 
-    public LineDataDTO getLineDataDTO() {
-        return lineDataDTO;
+    public String getLicencePlate() {
+        return licencePlate;
     }
 
-
-    public void setLineDataDTO(LineDataDTO newLineDataDTO) {
-        if (this.lineDataDTO == null || !this.lineDataDTO.equals(newLineDataDTO)) {
-            if (this.lineDataDTO != null) {
-                LineDataDTO oldLineDataDTO = this.lineDataDTO;
-                this.lineDataDTO = null;
-                oldLineDataDTO.removeVehicleDataDTO(this);
-            }
-            if (newLineDataDTO != null) {
-                this.lineDataDTO = newLineDataDTO;
-                this.lineDataDTO.addVehicleDataDTO(this);
-            }
-        }
+    public void setLicencePlate(String licencePlate) {
+        this.licencePlate = licencePlate;
     }
 
+    public Long getLineDataId() {
+        return lineDataId;
+    }
+
+    public void setLineDataId(Long lineDataId) {
+        this.lineDataId = lineDataId;
+    }
+
+    public Long getVehicleId() {
+        return vehicleId;
+    }
+
+    public void setVehicleId(Long vehicleId) {
+        this.vehicleId = vehicleId;
+    }
 }

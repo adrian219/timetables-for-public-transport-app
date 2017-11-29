@@ -29,66 +29,55 @@ public class TimetableDataDTO {
     @Column(name = "stop_direction_id")
     private Long stopDirectionId;
 
-    private StopDTO stopDTO;
-    private LineDataDTO lineDataDTO;
-    private StopDataDTO stopDataDTO;
-
     public TimetableDataDTO() {
 
     }
 
-    public StopDTO getStopDTO() {
-        return stopDTO;
+    public Long getTimetableDataId() {
+        return timetableDataId;
     }
 
-    public void setStopDTO(StopDTO newStopDTO) {
-        if (this.stopDTO == null || !this.stopDTO.equals(newStopDTO)) {
-            if (this.stopDTO != null) {
-                StopDTO oldStopDTO = this.stopDTO;
-                this.stopDTO = null;
-                oldStopDTO.removeTimetableDataDTO(this);
-            }
-            if (newStopDTO != null) {
-                this.stopDTO = newStopDTO;
-                this.stopDTO.addTimetableDataDTO(this);
-            }
-        }
+    public void setTimetableDataId(Long timetableDataId) {
+        this.timetableDataId = timetableDataId;
     }
 
-    public LineDataDTO getLineDataDTO() {
-        return lineDataDTO;
+    public DateTime getDepartureTime() {
+        return departureTime;
     }
 
-    public void setLineDataDTO(LineDataDTO newLineDataDTO) {
-        if (this.lineDataDTO == null || !this.lineDataDTO.equals(newLineDataDTO)) {
-            if (this.lineDataDTO != null) {
-                LineDataDTO oldLineDataDTO = this.lineDataDTO;
-                this.lineDataDTO = null;
-                oldLineDataDTO.removeTimetableDataDTO(this);
-            }
-            if (newLineDataDTO != null) {
-                this.lineDataDTO = newLineDataDTO;
-                this.lineDataDTO.addTimetableDataDTO(this);
-            }
-        }
+    public void setDepartureTime(DateTime departureTime) {
+        this.departureTime = departureTime;
     }
 
-    public StopDataDTO getStopDataDTO() {
-        return stopDataDTO;
+    public String getDayOfTheWeek() {
+        return dayOfTheWeek;
     }
 
-    public void setStopDataDTO(StopDataDTO newStopDataDTO) {
-        if (this.stopDataDTO == null || !this.stopDataDTO.equals(newStopDataDTO)) {
-            if (this.stopDataDTO != null) {
-                StopDataDTO oldStopDataDTO = this.stopDataDTO;
-                this.stopDataDTO = null;
-                oldStopDataDTO.removeTimetableDataDTO(this);
-            }
-            if (newStopDataDTO != null) {
-                this.stopDataDTO = newStopDataDTO;
-                this.stopDataDTO.addTimetableDataDTO(this);
-            }
-        }
+    public void setDayOfTheWeek(String dayOfTheWeek) {
+        this.dayOfTheWeek = dayOfTheWeek;
     }
 
+    public Long getStopDataId() {
+        return stopDataId;
+    }
+
+    public void setStopDataId(Long stopDataId) {
+        this.stopDataId = stopDataId;
+    }
+
+    public Long getLineDataId() {
+        return lineDataId;
+    }
+
+    public void setLineDataId(Long lineDataId) {
+        this.lineDataId = lineDataId;
+    }
+
+    public Long getStopDirectionId() {
+        return stopDirectionId;
+    }
+
+    public void setStopDirectionId(Long stopDirectionId) {
+        this.stopDirectionId = stopDirectionId;
+    }
 }
