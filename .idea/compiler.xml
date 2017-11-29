@@ -20,7 +20,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="timetables-for-public-transport-app" target="1.5" />
+      <module name="timetables-for-public-transport-app" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>
