@@ -1,4 +1,4 @@
-package pl.edu.wat.wcy.isi.pz.project.wieczorek.adrian.dto;
+package pl.edu.wat.wcy.isi.pz.project.wieczorek.adrian.dao;
 
 import org.joda.time.DateTime;
 
