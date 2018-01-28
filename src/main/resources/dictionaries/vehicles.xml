@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<vehicles>
+    <vehicle>
+        <type>Bus</type>
+        <forDisabled>false</forDisabled>
+    </vehicle>
+    <vehicle>
+        <type>Bus</type>
+        <forDisabled>true</forDisabled>
+    </vehicle>
+    <vehicle>
+        <type>Tram</type>
+        <forDisabled>false</forDisabled>
+    </vehicle>
+    <vehicle>
+        <type>Train</type>
+        <forDisabled>true</forDisabled>
+    </vehicle>
+    <vehicle>
+        <type>Tram</type>
+        <forDisabled>true</forDisabled>
+    </vehicle>
+    <vehicle>
+        <type>Metro</type>
+        <forDisabled>true</forDisabled>
+    </vehicle>
+    <vehicle>
+        <type>Metro</type>
+        <forDisabled>true</forDisabled>
+    </vehicle>
+</vehicles>

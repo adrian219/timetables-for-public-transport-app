@@ -3,27 +3,29 @@ package pl.edu.wat.wcy.isi.pz.project.wieczorek.adrian.dao;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "t_stops_data")
 public class StopData {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "stop_data_id")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long stopDataId;
 
-    @Column(name = "stop_number")
-    private short stopNumber;
+    private int stopNumber;
 
-    @Column(name = "latitude")
     private Double latitude;
 
-    @Column(name = "longitude")
     private Double longitude;
 
-    @Column(name = "stop_id")
-    private Long stopId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Stop stop;
 
     public StopData() {
 
+    }
+
+    public StopData(int stopNumber, Double latitude, Double longitude, Stop stop) {
+        this.stopNumber = stopNumber;
+        this.latitude = latitude;
+        this.longitude = longitude;
+        this.stop = stop;
     }
 
     public Long getStopDataId() {
@@ -34,11 +36,11 @@ public class StopData {
         this.stopDataId = stopDataId;
     }
 
-    public short getStopNumber() {
+    public int getStopNumber() {
         return stopNumber;
     }
 
-    public void setStopNumber(short stopNumber) {
+    public void setStopNumber(int stopNumber) {
         this.stopNumber = stopNumber;
     }
 
@@ -58,11 +60,11 @@ public class StopData {
         this.longitude = longitude;
     }
 
-    public Long getStopId() {
-        return stopId;
+    public Stop getStop() {
+        return stop;
     }
 
-    public void setStopId(Long stopId) {
-        this.stopId = stopId;
+    public void setStop(Stop stop) {
+        this.stop = stop;
     }
 }

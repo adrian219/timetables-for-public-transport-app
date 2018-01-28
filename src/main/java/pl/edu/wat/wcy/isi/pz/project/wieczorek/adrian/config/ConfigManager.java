@@ -15,28 +15,33 @@ public class ConfigManager {
     private static ConfigManager configManager;
     private Properties properties;
 
-    private ConfigManager() throws IOException{
+    private ConfigManager() {
         properties = new Properties();
         loadProperties();
     }
 
-    public static ConfigManager getInstance() throws IOException{
+    public static ConfigManager getInstance() {
         if(configManager == null){
             configManager = new ConfigManager();
         }
         return configManager;
     }
 
-    private void loadProperties() throws IOException {
-        InputStream inputStream = Thread.currentThread().getContextClassLoader().getResource(CONFIG_FILENAME).openStream();
-        properties.load(inputStream);
+    private void loadProperties() {
+        InputStream inputStream;
+        try {
+            inputStream = Thread.currentThread().getContextClassLoader().getResource(CONFIG_FILENAME).openStream();
+            properties.load(inputStream);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
-    public String getProperty(String key) throws IOException {
+    public String getProperty(String key) {
         return properties.getProperty(key);
     }
 
-    public void setProperty(String key, String value) throws IOException {
+    public void setProperty(String key, String value) {
         properties.setProperty(key, value);
     }
 }

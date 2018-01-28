@@ -1,34 +1,40 @@
 package pl.edu.wat.wcy.isi.pz.project.wieczorek.adrian.dao;
 
+import org.hibernate.annotations.Fetch;
 import org.joda.time.DateTime;
 
 import javax.persistence.*;
+import java.sql.Time;
 
 @Entity
-@Table(name = "t_timetables_data")
 public class TimetableData {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "timetable_data_id")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long timetableDataId;
 
-    @Column(name = "departure_time")
-    private DateTime departureTime;
+    private Time departureTime;
 
-    @Column(name = "day_of_the_week")
     private String dayOfTheWeek;
 
-    @Column(name = "stop_data_id")
-    private Long stopDataId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    private StopData stopData;
 
-    @Column(name = "line_data_id")
-    private Long lineDataId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    private LineData lineData;
 
-    @Column(name = "stop_direction_id")
-    private Long stopDirectionId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    private StopData stopDirection;
 
     public TimetableData() {
 
+    }
+
+    public TimetableData(Time departureTime, String dayOfTheWeek, StopData stopData, LineData lineData, StopData stopDirection) {
+        this.departureTime = departureTime;
+        this.dayOfTheWeek = dayOfTheWeek;
+        this.stopData = stopData;
+        this.lineData = lineData;
+        this.stopDirection = stopDirection;
     }
 
     public Long getTimetableDataId() {
@@ -39,11 +45,11 @@ public class TimetableData {
         this.timetableDataId = timetableDataId;
     }
 
-    public DateTime getDepartureTime() {
+    public Time getDepartureTime() {
         return departureTime;
     }
 
-    public void setDepartureTime(DateTime departureTime) {
+    public void setDepartureTime(Time departureTime) {
         this.departureTime = departureTime;
     }
 
@@ -55,27 +61,27 @@ public class TimetableData {
         this.dayOfTheWeek = dayOfTheWeek;
     }
 
-    public Long getStopDataId() {
-        return stopDataId;
+    public StopData getStopDataId() {
+        return stopData;
     }
 
-    public void setStopDataId(Long stopDataId) {
-        this.stopDataId = stopDataId;
+    public void setStopData(Long stopDataId) {
+        this.stopData = stopData;
     }
 
-    public Long getLineDataId() {
-        return lineDataId;
+    public LineData getLineData() {
+        return lineData;
     }
 
-    public void setLineDataId(Long lineDataId) {
-        this.lineDataId = lineDataId;
+    public void setLineData(LineData lineDataId) {
+        this.lineData = lineData;
     }
 
-    public Long getStopDirectionId() {
-        return stopDirectionId;
+    public StopData getStopDirection() {
+        return stopDirection;
     }
 
-    public void setStopDirectionId(Long stopDirectionId) {
-        this.stopDirectionId = stopDirectionId;
+    public void setStopDirection(StopData stopDirection) {
+        this.stopDirection = stopDirection;
     }
 }

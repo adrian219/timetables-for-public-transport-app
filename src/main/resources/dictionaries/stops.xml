@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<stops>
+    <stop>
+        <name>Centrum</name>
+    </stop>
+    <stop>
+        <name>Politechnika</name>
+    </stop>
+    <stop>
+        <name>Pole mokotowskie</name>
+    </stop>
+    <stop>
+        <name>Raclawicka</name>
+    </stop>
+    <stop>
+        <name>Wierzbno</name>
+    </stop>
+    <stop>
+        <name>Swietokrzyska</name>
+    </stop>
+    <stop>
+        <name>Ratusz Arsenal</name>
+    </stop>
+    <stop>
+        <name>Dworzec gdanski</name>
+    </stop>
+    <stop>
+        <name>Plac Wilsona</name>
+    </stop>
+    <stop>
+        <name>Marymont</name>
+    </stop>
+    <stop>
+        <name>Slodowiec</name>
+    </stop>
+    <stop>
+        <name>Stare Bielany</name>
+    </stop>
+    <stop>
+        <name>Wawrzyszew</name>
+    </stop>
+    <stop>
+        <name>Mlociny</name>
+    </stop>
+    <stop>
+        <name>WAT</name>
+    </stop>
+</stops>

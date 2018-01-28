@@ -3,24 +3,27 @@ package pl.edu.wat.wcy.isi.pz.project.wieczorek.adrian.dao;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "t_vehicles_data")
 public class VehicleData {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "vehicle_data_id")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long vehicleDataId;
 
-    @Column(name = "licence_plate")
     private String licencePlate;
 
-    @Column(name = "line_data_id")
-    private Long lineDataId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    private LineData lineData;
 
-    @Column(name = "vehicle_id")
-    private Long vehicleId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Vehicle vehicle;
 
     public VehicleData() {
 
+    }
+
+    public VehicleData(String licencePlate, LineData lineData, Vehicle vehicle) {
+        this.licencePlate = licencePlate;
+        this.lineData = lineData;
+        this.vehicle = vehicle;
     }
 
     public Long getVehicleDataId() {
@@ -39,19 +42,19 @@ public class VehicleData {
         this.licencePlate = licencePlate;
     }
 
-    public Long getLineDataId() {
-        return lineDataId;
+    public LineData getLineData() {
+        return lineData;
     }
 
-    public void setLineDataId(Long lineDataId) {
-        this.lineDataId = lineDataId;
+    public void setLineData(LineData lineData) {
+        this.lineData = lineData;
     }
 
-    public Long getVehicleId() {
-        return vehicleId;
+    public Vehicle getVehicle() {
+        return vehicle;
     }
 
-    public void setVehicleId(Long vehicleId) {
-        this.vehicleId = vehicleId;
+    public void setVehicle(Vehicle vehicle) {
+        this.vehicle = vehicle;
     }
 }

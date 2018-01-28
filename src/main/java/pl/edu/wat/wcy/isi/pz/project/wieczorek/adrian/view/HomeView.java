@@ -51,9 +51,11 @@ public class HomeView extends View{
     private Button searchByLineButton;
     private Button searchByStopButton;
     private Button showCityMapButton;
+    private ImageView weatherImage;
+    private Label weatherLabel;
 
     //CENTER PANE ELEMENTS
-    private HBox centerPane;
+    private AnchorPane centerPane;
 
     private Button button;
 
@@ -112,7 +114,13 @@ public class HomeView extends View{
         showCityMapButton = new Button();
         showCityMapButton.setId("showCityMapButton");
 
-        centerPane = new HBox();
+        weatherImage = new ImageView();
+        weatherImage.setId("weatherImage");
+
+        weatherLabel = new Label();
+        weatherLabel.setId("weatherLabel");
+
+        centerPane = new AnchorPane();
         centerPane.setId("centerPane");
 
         button = new Button();
@@ -121,32 +129,6 @@ public class HomeView extends View{
         homeScene = new Scene(createRootPane());
 
         homeScene.getStylesheets().add(AppStyle.getInstance().getCurrentPathStyle());
-        setTexts();
-    }
-
-    public void setTexts(){
-        fileMenu.setText(I18nProvider.getInstance().getText("fileMenu"));
-        aboutMenu.setText(I18nProvider.getInstance().getText("aboutMenu"));
-        closeItem.setText(I18nProvider.getInstance().getText("closeItem"));
-        aboutItem.setText(I18nProvider.getInstance().getText("versionItem"));
-
-        //dynamic menus
-        for(Map.Entry<String, Menu> entry : menuMap.entrySet()){
-            entry.getValue().setText(I18nProvider.getInstance().getText(entry.getKey()));
-        }
-
-        //dynamic menu items
-        for(Map.Entry<String, HashMap<String, MenuItem>> entry : menuItemsMap.entrySet()){
-            for(Map.Entry<String, MenuItem> entry1 : entry.getValue().entrySet()){
-                entry1.getValue().setText(I18nProvider.getInstance().getText(entry1.getKey() + "MenuItem"));
-            }
-        }
-
-        infoLabel.setText(I18nProvider.getInstance().getText("infoLabel"));
-        searchByLineButton.setText(I18nProvider.getInstance().getText("searchByLineButton"));
-        searchByStopButton.setText(I18nProvider.getInstance().getText("searchByStopButton"));
-        showCityMapButton.setText(I18nProvider.getInstance().getText("showCityMapButton"));
-        button.setText(I18nProvider.getInstance().getText("buttonTest"));
     }
 
     private void initializeMenus() throws IOException, ClassNotFoundException {
@@ -211,9 +193,7 @@ public class HomeView extends View{
     }
 
     private void setLeftPane() {
-        leftPane.getChildren().add(searchByLineButton);
-        leftPane.getChildren().add(searchByStopButton);
-        leftPane.getChildren().add(showCityMapButton);
+        leftPane.getChildren().addAll(searchByLineButton, searchByStopButton, showCityMapButton, weatherImage, weatherLabel);
     }
 
     private void setBottomPane() {
@@ -248,7 +228,7 @@ public class HomeView extends View{
         searchByStopButton.setMinWidth(50);
         showCityMapButton.setMinWidth(50);
 
-        centerPane.alignmentProperty().setValue(Pos.CENTER);
+        //centerPane.alignmentProperty().setValue(Pos.CENTER);
 
         textArea.setWrapText(true);
         textArea.setMaxHeight(60);
@@ -321,7 +301,7 @@ public class HomeView extends View{
         return showCityMapButton;
     }
 
-    public HBox getCenterPane() {
+    public AnchorPane getCenterPane() {
         return centerPane;
     }
 
@@ -335,5 +315,17 @@ public class HomeView extends View{
 
     public HashMap<String, HashMap<String, MenuItem>> getMenuItemsMap() {
         return menuItemsMap;
+    }
+
+    public HashMap<String, Menu> getMenuMap() {
+        return menuMap;
+    }
+
+    public ImageView getWeatherImage() {
+        return weatherImage;
+    }
+
+    public Label getWeatherLabel() {
+        return weatherLabel;
     }
 }

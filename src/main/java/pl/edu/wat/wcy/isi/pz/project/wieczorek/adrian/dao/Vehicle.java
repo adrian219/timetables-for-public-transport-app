@@ -3,17 +3,13 @@ package pl.edu.wat.wcy.isi.pz.project.wieczorek.adrian.dao;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "t_vehicles")
 public class Vehicle {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "vehicle_id")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long vehicleId;
 
-    @Column(name = "vehicle_type")
     private String vehicleType;
 
-    @Column(name = "for_disabled_person")
     private Boolean forDisabledPerson;
 
     public Vehicle() {
