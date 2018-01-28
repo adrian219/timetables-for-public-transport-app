@@ -4,7 +4,10 @@ import javafx.application.Application;
 import javafx.stage.Stage;
 import pl.edu.wat.wcy.isi.pz.project.wieczorek.adrian.controller.HomeController;
 import pl.edu.wat.wcy.isi.pz.project.wieczorek.adrian.model.HomeModel;
+import pl.edu.wat.wcy.isi.pz.project.wieczorek.adrian.provider.I18nProvider;
 import pl.edu.wat.wcy.isi.pz.project.wieczorek.adrian.view.HomeView;
+
+import java.io.IOException;
 
 public class Main extends Application {
 
@@ -20,14 +23,15 @@ public class Main extends Application {
     }
 
     private void setStageProperty(Stage primaryStage){
-        primaryStage.setTitle("Hello World");
+        I18nProvider provider = I18nProvider.getInstance();
+        primaryStage.setTitle(provider.getText("titleLabel"));
 //        primaryStage.initStyle(StageStyle.UNDECORATED);
     }
 
-    private void setHomePage(Stage primaryStage){
-        HomeModel homeModel = new HomeModel();
-        HomeController homeController = new HomeController(homeModel);
-        HomeView homeView = new HomeView(homeController, homeModel, 200, 200);
+    private void setHomePage(Stage primaryStage) throws IOException, ClassNotFoundException {
+        HomeView homeView = new HomeView();
+        HomeController homeController = new HomeController(homeView);
+
         primaryStage.setScene(homeView.asScene());
     }
 }

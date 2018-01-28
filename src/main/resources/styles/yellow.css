@@ -1,0 +1,39 @@
+#leftPane {
+    -fx-background-color: #cbc835;
+}
+
+#searchByLineButton {
+    -fx-background-color: #cde655;
+    -fx-text-alignment: center;
+}
+
+#searchByStopButton {
+    -fx-background-color: #cdf055;
+    -fx-text-alignment: center;
+}
+
+#showCityMapButton {
+    -fx-background-color: #cdf055;
+    -fx-text-alignment: center;
+}
+
+#centerPane {
+    -fx-background-color: #e7dc3c;
+}
+
+#bottomPane {
+    -fx-background-color: #92b421;
+}
+
+#infoLabel {
+    -fx-text-fill: #FFFFFF;
+    -fx-text-alignment: center;
+}
+
+#menuItem {
+
+}
+
+#menu {
+
+}
