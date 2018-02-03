@@ -1,30 +1,29 @@
 package pl.edu.wat.wcy.isi.pz.project.wieczorek.adrian.dao;
 
+import pl.edu.wat.wcy.isi.pz.project.wieczorek.adrian.dao.util.ShowElement;
+
 import javax.persistence.*;
 
 @Entity
-public class StopData {
+public class StopData extends ShowElement{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long stopDataId;
 
-    private int stopNumber;
+    @ManyToOne(fetch = FetchType.EAGER)
+    private LineData lineData;
 
-    private Double latitude;
-
-    private Double longitude;
-
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     private Stop stop;
 
-    public StopData() {
+    private int seqStopNumber;
 
+    public StopData() {
     }
 
-    public StopData(int stopNumber, Double latitude, Double longitude, Stop stop) {
-        this.stopNumber = stopNumber;
-        this.latitude = latitude;
-        this.longitude = longitude;
+    public StopData(int seqStopNumber, LineData lineData, Stop stop) {
+        this.seqStopNumber = seqStopNumber;
+        this.lineData = lineData;
         this.stop = stop;
     }
 
@@ -36,28 +35,12 @@ public class StopData {
         this.stopDataId = stopDataId;
     }
 
-    public int getStopNumber() {
-        return stopNumber;
+    public int getSeqStopNumber() {
+        return seqStopNumber;
     }
 
-    public void setStopNumber(int stopNumber) {
-        this.stopNumber = stopNumber;
-    }
-
-    public Double getLatitude() {
-        return latitude;
-    }
-
-    public void setLatitude(Double latitude) {
-        this.latitude = latitude;
-    }
-
-    public Double getLongitude() {
-        return longitude;
-    }
-
-    public void setLongitude(Double longitude) {
-        this.longitude = longitude;
+    public void setSeqStopNumber(int stopNumber) {
+        this.seqStopNumber = stopNumber;
     }
 
     public Stop getStop() {
@@ -66,5 +49,23 @@ public class StopData {
 
     public void setStop(Stop stop) {
         this.stop = stop;
+    }
+
+    public LineData getLineData() {
+        return lineData;
+    }
+
+    public void setLineData(LineData lineData) {
+        this.lineData = lineData;
+    }
+
+    @Override
+    public String getText() {
+        return "(" + seqStopNumber + ")" + " " + stop.getStopName(); //i moze jakis numer?
+    }
+
+    @Override
+    public Long getId() {
+        return stopDataId;
     }
 }

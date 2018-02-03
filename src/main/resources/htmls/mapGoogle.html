@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        #map {
+            height: 500px;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+<div id="map"></div>
+<script>
+    var map;
+    var marker;
+    var currentLat = 52.229676;
+    var currentLng = 21.012228999999934;
+
+    function initMap() {
+
+        map = new google.maps.Map(document.getElementById('map'), {
+            center: {lat: currentLat, lng: currentLng},
+            zoom: 13,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        });
+
+        var tempPosi = new google.maps.LatLng(currentLat, currentLng);
+
+        marker = new google.maps.Marker({
+            position: tempPosi,
+            map: map,
+            visible: true
+        });
+    }
+
+    function updateMarker(parameters){
+        var array = parameters.split("-");
+        var _lat = parseFloat(array[1]);
+        var _lng = parseFloat(array[2]);
+
+        var posi = new google.maps.LatLng(_lat, _lng);
+
+        marker = new google.maps.Marker({
+            position: posi,
+            map: map,
+            visible: true
+        });
+    }
+</script>
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCLnRh4faTv_vZ4_xANO9ILkuZlkwXFYAc&callback=initMap">
+</script>
+</body>
+</html>

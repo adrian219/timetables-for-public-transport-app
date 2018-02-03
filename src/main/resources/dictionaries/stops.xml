@@ -1,48 +1,73 @@
 <?xml version="1.0"?>
 <stops>
     <stop>
-        <name>Centrum</name>
-    </stop>
-    <stop>
-        <name>Politechnika</name>
-    </stop>
-    <stop>
-        <name>Pole mokotowskie</name>
-    </stop>
-    <stop>
-        <name>Raclawicka</name>
-    </stop>
-    <stop>
-        <name>Wierzbno</name>
-    </stop>
-    <stop>
-        <name>Swietokrzyska</name>
+        <name>Dworzec gdanski</name>
+        <latitude>0</latitude>
+        <longitude>0</longitude>
     </stop>
     <stop>
         <name>Ratusz Arsenal</name>
+        <latitude>0</latitude>
+        <longitude>0</longitude>
     </stop>
     <stop>
-        <name>Dworzec gdanski</name>
+        <name>Swietokrzyska</name>
+        <latitude>0</latitude>
+        <longitude>0</longitude>
     </stop>
     <stop>
-        <name>Plac Wilsona</name>
+        <name>Centrum</name>
+        <latitude>0</latitude>
+        <longitude>0</longitude>
     </stop>
     <stop>
-        <name>Marymont</name>
+        <name>Politechnika</name>
+        <latitude>0</latitude>
+        <longitude>0</longitude>
     </stop>
     <stop>
-        <name>Slodowiec</name>
+        <name>Pole mokotowskie</name>
+        <latitude>0</latitude>
+        <longitude>0</longitude>
     </stop>
     <stop>
-        <name>Stare Bielany</name>
-    </stop>
-    <stop>
-        <name>Wawrzyszew</name>
-    </stop>
-    <stop>
-        <name>Mlociny</name>
+        <name>Raclawicka</name>
+        <latitude>0</latitude>
+        <longitude>0</longitude>
     </stop>
     <stop>
         <name>WAT</name>
+        <latitude>0</latitude>
+        <longitude>0</longitude>
+    </stop>
+    <stop>
+        <name>Dworzec wilenski</name>
+        <latitude>0</latitude>
+        <longitude>0</longitude>
+    </stop>
+    <stop>
+        <name>Stadion narodowy</name>
+        <latitude>0</latitude>
+        <longitude>0</longitude>
+    </stop>
+    <stop>
+        <name>Centrum Nauki Kopernik</name>
+        <latitude>0</latitude>
+        <longitude>0</longitude>
+    </stop>
+    <stop>
+        <name>Uniwersytet</name>
+        <latitude>0</latitude>
+        <longitude>0</longitude>
+    </stop>
+    <stop>
+        <name>Rondo ONZ</name>
+        <latitude>0</latitude>
+        <longitude>0</longitude>
+    </stop>
+    <stop>
+        <name>Rondo Daszynskiego</name>
+        <latitude>0</latitude>
+        <longitude>0</longitude>
     </stop>
 </stops>

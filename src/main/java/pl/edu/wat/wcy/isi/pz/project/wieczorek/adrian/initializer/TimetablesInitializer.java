@@ -15,7 +15,7 @@ public class TimetablesInitializer {
                 try {
                     DatabaseManager databaseManager = DatabaseManager.getInstance();
                     databaseManager.loadDictionaries();
-                    databaseManager.loadExampleData();
+                    databaseManager.loadExampleData2();
                 } catch (ParserConfigurationException e) {
                     e.printStackTrace();
                 } catch (IOException e) {

@@ -1,0 +1,31 @@
+#leftPane {
+    -fx-background-color: #47cb3d;
+}
+
+#searchByLineButton {
+    -fx-background-color: #68cd82;
+    -fx-text-alignment: center;
+}
+
+#searchByStopButton {
+    -fx-background-color: #68cd82;
+    -fx-text-alignment: center;
+}
+
+#showCityMapButton {
+    -fx-background-color: #68cd82;
+    -fx-text-alignment: center;
+}
+
+#centerPane {
+    -fx-background-color: #41e791;
+}
+
+#bottomPane {
+    -fx-background-color: #2e9221;
+}
+
+#infoLabel {
+    -fx-text-fill: #FFFFFF;
+    -fx-text-alignment: center;
+}

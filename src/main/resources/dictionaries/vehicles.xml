@@ -26,6 +26,6 @@
     </vehicle>
     <vehicle>
         <type>Metro</type>
-        <forDisabled>true</forDisabled>
+        <forDisabled>false</forDisabled>
     </vehicle>
 </vehicles>

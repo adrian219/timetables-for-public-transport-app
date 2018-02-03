@@ -2,10 +2,9 @@ package pl.edu.wat.wcy.isi.pz.project.wieczorek.adrian.sample;
 
 import javafx.application.Application;
 import javafx.stage.Stage;
-import pl.edu.wat.wcy.isi.pz.project.wieczorek.adrian.config.ConfigManager;
+import pl.edu.wat.wcy.isi.pz.project.wieczorek.adrian.config.DatabaseManager;
 import pl.edu.wat.wcy.isi.pz.project.wieczorek.adrian.controller.HomeController;
 import pl.edu.wat.wcy.isi.pz.project.wieczorek.adrian.initializer.TimetablesInitializer;
-import pl.edu.wat.wcy.isi.pz.project.wieczorek.adrian.model.HomeModel;
 import pl.edu.wat.wcy.isi.pz.project.wieczorek.adrian.provider.I18nProvider;
 import pl.edu.wat.wcy.isi.pz.project.wieczorek.adrian.view.HomeView;
 
@@ -25,6 +24,7 @@ public class Main extends Application {
 
     public static void main(String[] args) {
         launch(args);
+        DatabaseManager.getInstance().closeConnection();
     }
 
     private void setStageProperty(Stage primaryStage){

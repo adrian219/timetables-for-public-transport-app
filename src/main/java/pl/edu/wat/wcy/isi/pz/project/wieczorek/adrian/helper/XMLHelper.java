@@ -1,15 +1,14 @@
 package pl.edu.wat.wcy.isi.pz.project.wieczorek.adrian.helper;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
-import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 import pl.edu.wat.wcy.isi.pz.project.wieczorek.adrian.config.ConfigManager;
 import pl.edu.wat.wcy.isi.pz.project.wieczorek.adrian.dao.Stop;
-import pl.edu.wat.wcy.isi.pz.project.wieczorek.adrian.dao.Vehicle;
 import pl.edu.wat.wcy.isi.pz.project.wieczorek.adrian.exception.NotFoundXMLException;
-import pl.edu.wat.wcy.isi.pz.project.wieczorek.adrian.provider.I18nProvider;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -20,7 +19,11 @@ import java.net.URL;
 import java.util.ArrayList;
 
 public class XMLHelper {
+    private static Logger log = LoggerFactory.getLogger(XMLHelper.class);
+
     public static ArrayList<Stop> getStopsList() throws ParserConfigurationException, NotFoundXMLException, SAXException, IOException {
+        log.info("Get all stops list");
+
         Document doc = parseXML(ConfigManager.getInstance().getProperty("stopsFileName"));
         ArrayList<Stop> stopsList = new ArrayList<>();
 
@@ -30,44 +33,36 @@ public class XMLHelper {
         for(int i = 0; i<nodeList.getLength(); i++){
             Element element = (Element)nodeList.item(i);
 
-            tempStop = new Stop();
-            tempStop.setStopName(element.getElementsByTagName("name").item(0).getTextContent());
+            try{
+                tempStop = new Stop(element.getElementsByTagName("name").item(0).getTextContent(), Double.parseDouble(element.getElementsByTagName("latitude").item(0).getTextContent()), Double.parseDouble(element.getElementsByTagName("longitude").item(0).getTextContent()));
+            }catch(NumberFormatException e){
+                log.info("cannot parse number");
+                log.info(e.getMessage());
+                tempStop = new Stop(element.getElementsByTagName("name").item(0).getTextContent(), 0.0, 0.0);
+            }
             stopsList.add(tempStop);
         }
 
         return stopsList;
     }
 
-    public static ArrayList<Vehicle> getVehiclesList() throws NotFoundXMLException, IOException, SAXException, ParserConfigurationException {
-        Document doc = parseXML(ConfigManager.getInstance().getProperty("vehiclesFileName"));
-        ArrayList<Vehicle> vehiclesList = new ArrayList<>();
-
-        NodeList nodeList = doc.getElementsByTagName("vehicle");
-
-        Vehicle tempVehicle;
-        for(int i = 0; i<nodeList.getLength(); i++){
-            Element element = (Element)nodeList.item(i);
-
-            tempVehicle = new Vehicle();
-            tempVehicle.setVehicleType(element.getElementsByTagName("type").item(0).getTextContent());
-            tempVehicle.setForDisabledPerson(Boolean.parseBoolean(element.getElementsByTagName("forDisabled").item(0).getTextContent()));
-            vehiclesList.add(tempVehicle);
-        }
-
-        return vehiclesList;
-    }
-
     private static Document parseXML(String xml) throws ParserConfigurationException, IOException, SAXException, NotFoundXMLException {
+        log.info("Start parse XML");
+
         File fileXML = getXMLFile(xml);
 
         DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
         DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
         Document doc = dBuilder.parse(fileXML);
 
+        log.info("Finish parse XML");
+
         return doc;
     }
 
     private static File getXMLFile(String xml) throws NotFoundXMLException {
+        log.info("Searching xml file...");
+
         URL url = (new XMLHelper()).getClass().getClassLoader().getResource("dictionaries/" + xml);
 
         if(url == null){
@@ -75,29 +70,5 @@ public class XMLHelper {
         }
 
         return new File(url.getFile().replace("%20", " "));
-    }
-
-    public static void main(String[] args){
-//        try {
-//            ArrayList<Stop> list = getStopsList(parseXML("stops.xml"));
-//
-//            for(Stop stop : list){
-//                System.out.println(stop.toString());
-//            }
-//
-//            ArrayList<Vehicle> list2 = getVehiclesList(parseXML("vehicles.xml"));
-//
-//            for(Vehicle vehicle : list2){
-//                System.out.println(vehicle.toString());
-//            }
-//        } catch (ParserConfigurationException e) {
-//            e.printStackTrace();
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        } catch (SAXException e) {
-//            e.printStackTrace();
-//        } catch (NotFoundXMLException e) {
-//            e.printStackTrace();
-//        }
     }
 }

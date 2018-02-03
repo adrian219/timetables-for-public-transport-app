@@ -1,5 +1,6 @@
 package pl.edu.wat.wcy.isi.pz.project.wieczorek.adrian.service.pojo;
 
+import pl.edu.wat.wcy.isi.pz.project.wieczorek.adrian.exception.NotInternetConnectionException;
 import pl.edu.wat.wcy.isi.pz.project.wieczorek.adrian.service.OpenWeatherMapClient;
 
 public class WeatherForecast {
@@ -126,7 +127,10 @@ public class WeatherForecast {
         this.main = main;
     }
 
-    public String getURLIcon(){
+    public String getURLIcon() throws NotInternetConnectionException {
+        if(weather == null){
+            throw new NotInternetConnectionException();
+        }
         return OpenWeatherMapClient.OPEN_WEATHER_MAP_ICON_URL.replace("<ICON_ID>", getWeather()[0].getIcon());
     }
 

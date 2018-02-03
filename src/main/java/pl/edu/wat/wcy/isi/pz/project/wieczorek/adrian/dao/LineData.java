@@ -1,9 +1,11 @@
 package pl.edu.wat.wcy.isi.pz.project.wieczorek.adrian.dao;
 
+import pl.edu.wat.wcy.isi.pz.project.wieczorek.adrian.dao.util.ShowElement;
+
 import javax.persistence.*;
 
 @Entity
-public class LineData {
+public class LineData extends ShowElement {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long lineDataId;
@@ -33,4 +35,16 @@ public class LineData {
     public void setNumberLine(String numberLine) {
         this.numberLine = numberLine;
     }
+
+    @Override
+    public String getText(){
+        return numberLine;
+    }
+
+    @Override
+    public Long getId() {
+        return lineDataId;
+    }
+
+
 }

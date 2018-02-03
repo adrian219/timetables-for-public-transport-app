@@ -1,5 +1,8 @@
 package pl.edu.wat.wcy.isi.pz.project.wieczorek.adrian.helper;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -10,19 +13,11 @@ import java.util.Enumeration;
 public class ReflectionHelper {
     public static final String DEFAULT_PACKAGE = ReflectionHelper.class.getPackage().getName().substring(0, ReflectionHelper.class.getPackage().getName().length() - 7);
 
-//    public static void main(String[] args){
-//        try {
-//            for(Class<?> c : getClassesImplementingInterface(DEFAULT_PACKAGE + ".enums.MenuElement")){
-//                System.out.println(c.getName());
-//            }
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        } catch (ClassNotFoundException e) {
-//            e.printStackTrace();
-//        }
-//    }
+    private static Logger log = LoggerFactory.getLogger(ReflectionHelper.class);
 
     public static ArrayList<Class<?>> getClassesImplementingInterface(String interfaceName) throws IOException, ClassNotFoundException {
+        log.info("Get Classes Implementing interface");
+
         ArrayList<Class<?>> resultList = new ArrayList<>();
 
         Class<?> interfaceClass = Class.forName(interfaceName);
@@ -41,6 +36,8 @@ public class ReflectionHelper {
     }
 
     private static ArrayList<Class<?>> getClasses(String packageName) throws ClassNotFoundException, IOException {
+        log.info("Get classes of package");
+
         ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
         String path = packageName.replace('.', '/');
         Enumeration resources = classLoader.getResources(path);
@@ -57,13 +54,15 @@ public class ReflectionHelper {
     }
 
     private static ArrayList<Class<?>> findClasses(File directory, String packageName) throws ClassNotFoundException {
+        log.info("Find classes in package");
+
         ArrayList<Class<?>> classes = new ArrayList<>();
         if (!directory.exists()) {
             return classes;
         }
         File[] files = directory.listFiles();
         if(files == null){
-            System.out.println("files is null!");
+            log.info("file is null!");
         }else{
             for (File file : files) {
                 if (file.isDirectory()) {

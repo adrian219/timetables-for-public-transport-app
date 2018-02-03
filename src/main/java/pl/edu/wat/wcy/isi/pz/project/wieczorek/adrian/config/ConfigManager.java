@@ -40,8 +40,4 @@ public class ConfigManager {
     public String getProperty(String key) {
         return properties.getProperty(key);
     }
-
-    public void setProperty(String key, String value) {
-        properties.setProperty(key, value);
-    }
 }
